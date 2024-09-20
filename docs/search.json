@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "ST588Homework4.html",
+    "href": "ST588Homework4.html",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "",
+    "text": "../MyData.csv\n\n\n\n\n\nYou can utilize version control (eg Github) to work collaboratively and go backwards if needed.\n\n\n\n\n\nGit is a version control system which tracks code changes and who made those changes. GitHub is a host of Git repositories where the Gits are stored for collaborative access and editing.\n\n\n\n\n\nA tibbles smallest unit is a tibble, while the smallest unit of a data.frame is a vector.\n\n\nA tibble does not convert strings to factors.\n\n\n\n\n\nlibrary(dplyr)\nlibrary(readr)\nlibrary(forcats)\nlibrary(readxl)\n\n\narrange(filter(select(as_tibble(iris), starts_with(\"Petal\"), Species), Petal.Length &lt; 1.55), Species)\n\n# A tibble: 37 × 3\n   Petal.Length Petal.Width Species\n          &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  \n 1          1.4         0.2 setosa \n 2          1.4         0.2 setosa \n 3          1.3         0.2 setosa \n 4          1.5         0.2 setosa \n 5          1.4         0.2 setosa \n 6          1.4         0.3 setosa \n 7          1.5         0.2 setosa \n 8          1.4         0.2 setosa \n 9          1.5         0.1 setosa \n10          1.5         0.2 setosa \n# ℹ 27 more rows\n\n\n\niris_tbl&lt;-as_tibble(iris)\niris_tbl |&gt;\n  select(starts_with(\"Petal\"),Species) |&gt;\n   filter(Petal.Length &lt; 1.55) |&gt;\n    arrange(Species)\n\n# A tibble: 37 × 3\n   Petal.Length Petal.Width Species\n          &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  \n 1          1.4         0.2 setosa \n 2          1.4         0.2 setosa \n 3          1.3         0.2 setosa \n 4          1.5         0.2 setosa \n 5          1.4         0.2 setosa \n 6          1.4         0.3 setosa \n 7          1.5         0.2 setosa \n 8          1.4         0.2 setosa \n 9          1.5         0.1 setosa \n10          1.5         0.2 setosa \n# ℹ 27 more rows"
+  },
+  {
+    "objectID": "ST588Homework4.html#if-you-working-directory-is-myfolderhomework-what-relative-path-would-you-specify-to-get-the-file-located-at-myfoldermydata.csv",
+    "href": "ST588Homework4.html#if-you-working-directory-is-myfolderhomework-what-relative-path-would-you-specify-to-get-the-file-located-at-myfoldermydata.csv",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "",
+    "text": "../MyData.csv"
+  },
+  {
+    "objectID": "ST588Homework4.html#what-are-the-major-benefits-of-using-r-projects",
+    "href": "ST588Homework4.html#what-are-the-major-benefits-of-using-r-projects",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "",
+    "text": "You can utilize version control (eg Github) to work collaboratively and go backwards if needed."
+  },
+  {
+    "objectID": "ST588Homework4.html#what-is-git-and-what-is-github",
+    "href": "ST588Homework4.html#what-is-git-and-what-is-github",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "",
+    "text": "Git is a version control system which tracks code changes and who made those changes. GitHub is a host of Git repositories where the Gits are stored for collaborative access and editing."
+  },
+  {
+    "objectID": "ST588Homework4.html#what-are-the-two-main-differences-between-a-tibble-and-a-data.frame",
+    "href": "ST588Homework4.html#what-are-the-two-main-differences-between-a-tibble-and-a-data.frame",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "",
+    "text": "A tibbles smallest unit is a tibble, while the smallest unit of a data.frame is a vector.\n\n\nA tibble does not convert strings to factors."
+  },
+  {
+    "objectID": "ST588Homework4.html#rewrite-the-following-nested-function-call-using-basers-chaining-operator.",
+    "href": "ST588Homework4.html#rewrite-the-following-nested-function-call-using-basers-chaining-operator.",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "",
+    "text": "library(dplyr)\nlibrary(readr)\nlibrary(forcats)\nlibrary(readxl)\n\n\narrange(filter(select(as_tibble(iris), starts_with(\"Petal\"), Species), Petal.Length &lt; 1.55), Species)\n\n# A tibble: 37 × 3\n   Petal.Length Petal.Width Species\n          &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  \n 1          1.4         0.2 setosa \n 2          1.4         0.2 setosa \n 3          1.3         0.2 setosa \n 4          1.5         0.2 setosa \n 5          1.4         0.2 setosa \n 6          1.4         0.3 setosa \n 7          1.5         0.2 setosa \n 8          1.4         0.2 setosa \n 9          1.5         0.1 setosa \n10          1.5         0.2 setosa \n# ℹ 27 more rows\n\n\n\niris_tbl&lt;-as_tibble(iris)\niris_tbl |&gt;\n  select(starts_with(\"Petal\"),Species) |&gt;\n   filter(Petal.Length &lt; 1.55) |&gt;\n    arrange(Species)\n\n# A tibble: 37 × 3\n   Petal.Length Petal.Width Species\n          &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  \n 1          1.4         0.2 setosa \n 2          1.4         0.2 setosa \n 3          1.3         0.2 setosa \n 4          1.5         0.2 setosa \n 5          1.4         0.2 setosa \n 6          1.4         0.3 setosa \n 7          1.5         0.2 setosa \n 8          1.4         0.2 setosa \n 9          1.5         0.1 setosa \n10          1.5         0.2 setosa \n# ℹ 27 more rows"
+  },
+  {
+    "objectID": "ST588Homework4.html#glass-data",
+    "href": "ST588Homework4.html#glass-data",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "Glass Data",
+    "text": "Glass Data\n\nRead in CSV file (glass.data) and add column names\n\nheadr &lt;- c(\"Id\", \"RI\", \"Na\", \"Mg\", \"Al\", \"Si\", \"K\", \"Ca\", \"Ba\", \"Fe\", \"Type_of_Glass\")\nheadTypes &lt;- list(\"d\", \"d\", \"d\", \"d\", \"d\", \"d\", \"d\", \"d\", \"d\", \"d\", \"c\")\nglass&lt;-read_csv(\"./glass.data\", col_names=headr, col_types=headTypes)\nglass\n\n# A tibble: 214 × 11\n      Id    RI    Na    Mg    Al    Si     K    Ca    Ba    Fe Type_of_Glass\n   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        \n 1     1  1.52  13.6  4.49  1.1   71.8  0.06  8.75     0  0    1            \n 2     2  1.52  13.9  3.6   1.36  72.7  0.48  7.83     0  0    1            \n 3     3  1.52  13.5  3.55  1.54  73.0  0.39  7.78     0  0    1            \n 4     4  1.52  13.2  3.69  1.29  72.6  0.57  8.22     0  0    1            \n 5     5  1.52  13.3  3.62  1.24  73.1  0.55  8.07     0  0    1            \n 6     6  1.52  12.8  3.61  1.62  73.0  0.64  8.07     0  0.26 1            \n 7     7  1.52  13.3  3.6   1.14  73.1  0.58  8.17     0  0    1            \n 8     8  1.52  13.2  3.61  1.05  73.2  0.57  8.24     0  0    1            \n 9     9  1.52  14.0  3.58  1.37  72.1  0.56  8.3      0  0    1            \n10    10  1.52  13    3.6   1.36  73.0  0.57  8.4      0  0.11 1            \n# ℹ 204 more rows\n\n\n\n\nReplace Type_of_Glass Numeric Values with Character Descriptors\n\nglass |&gt;\n  mutate(Type_of_Glass = fct_recode(Type_of_Glass,\n    \"building_windows_float_processed\"     = \"1\",\n    \"building_windows_non_float_processed\" = \"2\",\n    \"vehicle_windows_float_processed\"      = \"3\",\n    \"vehicle_windows_non_float_processed\"  = \"4\",\n    \"containers\"                           = \"5\",\n    \"tableware\"                            = \"6\",\n    \"headlamps\"                            = \"7\" \n  )) |&gt;\n  filter(Fe &lt; 0.2, (Type_of_Glass == \"tableware\"|Type_of_Glass == \"headlamps\"))\n\n# A tibble: 38 × 11\n      Id    RI    Na    Mg    Al    Si     K    Ca    Ba    Fe Type_of_Glass\n   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;        \n 1   177  1.52  14    2.39  1.56  72.4  0     9.57  0        0 tableware    \n 2   178  1.52  13.8  2.41  1.19  72.8  0     9.77  0        0 tableware    \n 3   179  1.52  14.5  2.24  1.62  72.4  0     9.26  0        0 tableware    \n 4   180  1.52  14.1  2.19  1.66  72.7  0     9.32  0        0 tableware    \n 5   181  1.51  14.4  1.74  1.54  74.6  0     7.59  0        0 tableware    \n 6   182  1.52  15.0  0.78  1.74  72.5  0     9.95  0        0 tableware    \n 7   183  1.52  14.2  0     2.09  72.7  0    10.9   0        0 tableware    \n 8   184  1.52  14.6  0     0.56  73.5  0    11.2   0        0 tableware    \n 9   185  1.51  17.4  0     0.34  75.4  0     6.65  0        0 tableware    \n10   186  1.51  13.7  3.2   1.81  72.8  1.76  5.43  1.19     0 headlamps    \n# ℹ 28 more rows\n\n\n\n\nRead in yeast.data and add column names\n\nheadry &lt;- c(\"seq_name\", \"mcg\", \"gvh\", \"alm\", \"mit\", \"erl\", \"pox\", \"vac\", \"nuc\", \"class\")\nyeast&lt;-read_table(\"./yeast.data\", col_names=headry, show_col_types=FALSE)\nyeast\n\n# A tibble: 1,484 × 10\n   seq_name     mcg   gvh   alm   mit   erl   pox   vac   nuc class\n   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;\n 1 ADT1_YEAST  0.58  0.61  0.47  0.13   0.5   0    0.48  0.22 MIT  \n 2 ADT2_YEAST  0.43  0.67  0.48  0.27   0.5   0    0.53  0.22 MIT  \n 3 ADT3_YEAST  0.64  0.62  0.49  0.15   0.5   0    0.53  0.22 MIT  \n 4 AAR2_YEAST  0.58  0.44  0.57  0.13   0.5   0    0.54  0.22 NUC  \n 5 AATM_YEAST  0.42  0.44  0.48  0.54   0.5   0    0.48  0.22 MIT  \n 6 AATC_YEAST  0.51  0.4   0.56  0.17   0.5   0.5  0.49  0.22 CYT  \n 7 ABC1_YEAST  0.5   0.54  0.48  0.65   0.5   0    0.53  0.22 MIT  \n 8 BAF1_YEAST  0.48  0.45  0.59  0.2    0.5   0    0.58  0.34 NUC  \n 9 ABF2_YEAST  0.55  0.5   0.66  0.36   0.5   0    0.49  0.22 MIT  \n10 ABP1_YEAST  0.4   0.39  0.6   0.15   0.5   0    0.58  0.3  CYT  \n# ℹ 1,474 more rows\n\n\n\n\nRemove seq_name and nuc columns, then add columns for means of each numeric variable at each class grouping\n\nyeast |&gt;\n  select(\"mcg\":\"vac\",\"class\") |&gt;\n  arrange(class) |&gt;\n  group_by(class) |&gt;\n  mutate(across(where(is.numeric), \n                mean, .names = \"mean_{.col}\")) |&gt;\n  mutate(across(where(is.numeric), \n                median,.names = \"med_{.col}\")) |&gt;\n  select(-starts_with(\"med_mean\"))\n\n# A tibble: 1,484 × 22\n# Groups:   class [10]\n     mcg   gvh   alm   mit   erl   pox   vac class mean_mcg mean_gvh mean_alm\n   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n 1  0.51  0.4   0.56  0.17   0.5   0.5  0.49 CYT      0.481    0.470    0.535\n 2  0.4   0.39  0.6   0.15   0.5   0    0.58 CYT      0.481    0.470    0.535\n 3  0.4   0.42  0.57  0.35   0.5   0    0.53 CYT      0.481    0.470    0.535\n 4  0.46  0.44  0.52  0.11   0.5   0    0.5  CYT      0.481    0.470    0.535\n 5  0.47  0.39  0.5   0.11   0.5   0    0.49 CYT      0.481    0.470    0.535\n 6  0.45  0.4   0.5   0.16   0.5   0    0.5  CYT      0.481    0.470    0.535\n 7  0.43  0.44  0.48  0.22   0.5   0    0.51 CYT      0.481    0.470    0.535\n 8  0.73  0.63  0.42  0.3    0.5   0    0.49 CYT      0.481    0.470    0.535\n 9  0.43  0.53  0.52  0.13   0.5   0    0.55 CYT      0.481    0.470    0.535\n10  0.46  0.53  0.52  0.15   0.5   0    0.58 CYT      0.481    0.470    0.535\n# ℹ 1,474 more rows\n# ℹ 11 more variables: mean_mit &lt;dbl&gt;, mean_erl &lt;dbl&gt;, mean_pox &lt;dbl&gt;,\n#   mean_vac &lt;dbl&gt;, med_mcg &lt;dbl&gt;, med_gvh &lt;dbl&gt;, med_alm &lt;dbl&gt;, med_mit &lt;dbl&gt;,\n#   med_erl &lt;dbl&gt;, med_pox &lt;dbl&gt;, med_vac &lt;dbl&gt;"
+  },
+  {
+    "objectID": "ST588Homework4.html#read-in-white-wine-dataset",
+    "href": "ST588Homework4.html#read-in-white-wine-dataset",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "Read in White Wine Dataset",
+    "text": "Read in White Wine Dataset"
+  },
+  {
+    "objectID": "ST588Homework4.html#change-names-from-non-standard-to-standard-names-and-add-wine-type-white",
+    "href": "ST588Homework4.html#change-names-from-non-standard-to-standard-names-and-add-wine-type-white",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "Change names from non-standard to standard names and add wine type (white)",
+    "text": "Change names from non-standard to standard names and add wine type (white)\n\nwhiteWine &lt;- read_excel(\"./white-wine.xlsx\")\nwhiteWine\n\n# A tibble: 4,898 × 12\n   `fixed acidity` `volatile acidity` `citric acid` `residual sugar` chlorides\n             &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;\n 1               7               0.27          0.36             20.7     0.045\n 2              63               0.3           0.34              1.6     0.049\n 3              81               0.28          0.4               6.9     0.05 \n 4              72               0.23          0.32              8.5     0.058\n 5              72               0.23          0.32              8.5     0.058\n 6              81               0.28          0.4               6.9     0.05 \n 7              62               0.32          0.16              7       0.045\n 8               7               0.27          0.36             20.7     0.045\n 9              63               0.3           0.34              1.6     0.049\n10              81               0.22          0.43              1.5     0.044\n# ℹ 4,888 more rows\n# ℹ 7 more variables: `free sulfur dioxide` &lt;dbl&gt;,\n#   `total sulfur dioxide` &lt;dbl&gt;, density &lt;dbl&gt;, pH &lt;dbl&gt;, sulphates &lt;dbl&gt;,\n#   alcohol &lt;dbl&gt;, quality &lt;dbl&gt;\n\nwhiteWineNames &lt;- read_excel(\"./white-wine.xlsx\",\n                             sheet = excel_sheets(\"./white-wine.xlsx\")[2])\nwhiteWineA &lt;- whiteWine |&gt;\nrename(\"fixed_acidity\" = `fixed acidity`,\n       \"volatile_acidity\" = `volatile acidity`,\n       \"citric_acid\" = `citric acid`,\n       \"residual_sugar\" = `residual sugar`,\n       \"free_sulfur_dioxide\" = `free sulfur dioxide`,\n       \"total_sulfur_dioxide\" = `total sulfur dioxide`) |&gt;\n  mutate(type = \"white\")"
+  },
+  {
+    "objectID": "ST588Homework4.html#read-in-redwine-dataset",
+    "href": "ST588Homework4.html#read-in-redwine-dataset",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "Read in redWine dataset",
+    "text": "Read in redWine dataset"
+  },
+  {
+    "objectID": "ST588Homework4.html#changes-non-standard-names-to-standard-names",
+    "href": "ST588Homework4.html#changes-non-standard-names-to-standard-names",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "changes non-standard names to standard names",
+    "text": "changes non-standard names to standard names"
+  },
+  {
+    "objectID": "ST588Homework4.html#add-wine-type-red",
+    "href": "ST588Homework4.html#add-wine-type-red",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "add wine type (red)",
+    "text": "add wine type (red)\n\nredWine &lt;- read_delim(\"./red-wine.csv\", delim = \";\")\nredWineA &lt;- redWine |&gt;\n  rename(\"fixed_acidity\" = `fixed acidity`,\n       \"volatile_acidity\" = `volatile acidity`,\n       \"citric_acid\" = `citric acid`,\n       \"residual_sugar\" = `residual sugar`,\n       \"free_sulfur_dioxide\" = `free sulfur dioxide`,\n       \"total_sulfur_dioxide\" = `total sulfur dioxide`) |&gt;\n  mutate(type = \"red\")"
+  },
+  {
+    "objectID": "ST588Homework4.html#combine-white-and-red-wine-datasets-filter-for-high-quality-and-remove-certain-variables-add-mean-and-sd-calcs",
+    "href": "ST588Homework4.html#combine-white-and-red-wine-datasets-filter-for-high-quality-and-remove-certain-variables-add-mean-and-sd-calcs",
+    "title": "ST588Homework4\nMatt Bray",
+    "section": "Combine white and red wine datasets, filter for high quality and remove certain variables, add mean and sd calcs",
+    "text": "Combine white and red wine datasets, filter for high quality and remove certain variables, add mean and sd calcs\n\ncombinedWine &lt;- bind_rows(list(whiteWineA, redWineA))\ncombinedWine |&gt; \n  filter(quality &gt; 6.5 & alcohol &lt; 132) |&gt;\n  arrange(desc(quality)) |&gt;\n  select(contains(\"acid\"), alcohol, type, quality) |&gt;\n  group_by(quality) |&gt;\n  mutate(mean_alcohol = mean(alcohol)) |&gt;\n    mutate(sd_alcohol = sd(alcohol))\n\n# A tibble: 1,206 × 8\n# Groups:   quality [3]\n   fixed_acidity volatile_acidity citric_acid alcohol type  quality mean_alcohol\n           &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;\n 1            91             0.27        0.45     104 white       9        122. \n 2            66             0.36        0.29     124 white       9        122. \n 3            74             0.24        0.36     125 white       9        122. \n 4            69             0.36        0.34     127 white       9        122. \n 5            71             0.26        0.49     129 white       9        122. \n 6            62             0.66        0.48     128 white       8         94.1\n 7            62             0.66        0.48     128 white       8         94.1\n 8            68             0.26        0.42     105 white       8         94.1\n 9            67             0.23        0.31     107 white       8         94.1\n10            67             0.23        0.31     107 white       8         94.1\n# ℹ 1,196 more rows\n# ℹ 1 more variable: sd_alcohol &lt;dbl&gt;\n\n\n\nThe End"
+  }
+]

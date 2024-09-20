@@ -1,0 +1,147 @@
+---
+title: | 
+     | ST588Homework4
+     | Matt Bray
+format: html
+code-overflow: wrap
+editor: visual
+---
+
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# Task 1: Conceptual Questions
+
+## 1. If you working directory is myfolder/homework/, what relative path would you specify to get the file located at myfolder/MyData.csv?
+
+> ../MyData.csv
+
+## 2. What are the major benefits of using R projects?
+
+> You can utilize version control (eg Github) to work collaboratively and go backwards if needed.
+
+## 3. What is git and what is github
+
+> Git is a version control system which tracks code changes and who made those changes. GitHub is a host of Git repositories where the Gits are stored for collaborative access and editing.
+
+## 4. What are the two main differences between a tibble and a data.frame?
+
+> A tibbles smallest unit is a tibble, while the smallest unit of a data.frame is a vector.
+
+> A tibble does not convert strings to factors.
+
+## 5. Rewrite the following nested function call using BaseR's chaining operator.
+
+```{r}
+library(dplyr)
+library(readr)
+library(forcats)
+library(readxl)
+```
+
+```{r}
+arrange(filter(select(as_tibble(iris), starts_with("Petal"), Species), Petal.Length < 1.55), Species)
+```
+```{r}
+iris_tbl<-as_tibble(iris)
+iris_tbl |>
+  select(starts_with("Petal"),Species) |>
+   filter(Petal.Length < 1.55) |>
+    arrange(Species)
+```
+
+# Task 2: Reading Delimited Data
+## Glass Data
+
+### Read in CSV file (glass.data) and add column names
+```{r}
+headr <- c("Id", "RI", "Na", "Mg", "Al", "Si", "K", "Ca", "Ba", "Fe", "Type_of_Glass")
+headTypes <- list("d", "d", "d", "d", "d", "d", "d", "d", "d", "d", "c")
+glass<-read_csv("./glass.data", col_names=headr, col_types=headTypes)
+glass
+```
+
+### Replace Type_of_Glass Numeric Values with Character Descriptors
+```{r}
+glass |>
+  mutate(Type_of_Glass = fct_recode(Type_of_Glass,
+    "building_windows_float_processed"     = "1",
+    "building_windows_non_float_processed" = "2",
+    "vehicle_windows_float_processed"      = "3",
+    "vehicle_windows_non_float_processed"  = "4",
+    "containers"                           = "5",
+    "tableware"                            = "6",
+    "headlamps"                            = "7" 
+  )) |>
+  filter(Fe < 0.2, (Type_of_Glass == "tableware"|Type_of_Glass == "headlamps"))
+```
+
+### Read in yeast.data and add column names
+```{r}
+headry <- c("seq_name", "mcg", "gvh", "alm", "mit", "erl", "pox", "vac", "nuc", "class")
+yeast<-read_table("./yeast.data", col_names=headry, show_col_types=FALSE)
+yeast
+```
+
+### Remove seq_name and nuc columns, then add columns for means of each numeric variable at each class grouping
+```{r}
+yeast |>
+  select("mcg":"vac","class") |>
+  arrange(class) |>
+  group_by(class) |>
+  mutate(across(where(is.numeric), 
+                mean, .names = "mean_{.col}")) |>
+  mutate(across(where(is.numeric), 
+                median,.names = "med_{.col}")) |>
+  select(-starts_with("med_mean"))
+```
+
+# Task 3 Combining Excel and Delimited Data
+## Read in White Wine Dataset
+## Change names from non-standard to standard names and add wine type (white)
+```{r}
+whiteWine <- read_excel("./white-wine.xlsx")
+whiteWine
+whiteWineNames <- read_excel("./white-wine.xlsx",
+                             sheet = excel_sheets("./white-wine.xlsx")[2])
+whiteWineA <- whiteWine |>
+rename("fixed_acidity" = `fixed acidity`,
+       "volatile_acidity" = `volatile acidity`,
+       "citric_acid" = `citric acid`,
+       "residual_sugar" = `residual sugar`,
+       "free_sulfur_dioxide" = `free sulfur dioxide`,
+       "total_sulfur_dioxide" = `total sulfur dioxide`) |>
+  mutate(type = "white")
+```
+
+## Read in redWine dataset
+## changes non-standard names to standard names
+## add wine type (red)
+```{r}
+redWine <- read_delim("./red-wine.csv", delim = ";")
+redWineA <- redWine |>
+  rename("fixed_acidity" = `fixed acidity`,
+       "volatile_acidity" = `volatile acidity`,
+       "citric_acid" = `citric acid`,
+       "residual_sugar" = `residual sugar`,
+       "free_sulfur_dioxide" = `free sulfur dioxide`,
+       "total_sulfur_dioxide" = `total sulfur dioxide`) |>
+  mutate(type = "red")
+```
+
+## Combine white and red wine datasets, filter for high quality and remove certain variables, add mean and sd calcs
+```{r}
+combinedWine <- bind_rows(list(whiteWineA, redWineA))
+combinedWine |> 
+  filter(quality > 6.5 & alcohol < 132) |>
+  arrange(desc(quality)) |>
+  select(contains("acid"), alcohol, type, quality) |>
+  group_by(quality) |>
+  mutate(mean_alcohol = mean(alcohol)) |>
+    mutate(sd_alcohol = sd(alcohol))
+```
+
+> The End
+
